@@ -1,0 +1,93 @@
+package com.GupiGames.Entities;
+
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+
+public class Entity extends Rectangle{
+
+	protected BufferedImage sprite;
+	protected int Width, Height;
+	protected int x, y , z;
+	
+	protected int maskWidth, maskHeight;
+	protected int maskX, maskY;
+	
+	public Entity(BufferedImage sprite, int x, int y, int Width, int Height) {
+		
+		this.Width = Width; this.Height = Height;
+		this.x = x; this.y = y;
+		this.sprite = sprite;
+		
+	}
+	
+	public int getWidth() {
+		return Width;
+	}
+	public int getHeight() {
+		return Height;
+	}
+	
+	public int getX() { 
+		return x;
+	}
+	public int getY() {
+		return y;
+	}
+	public int getZ() {
+		return z;
+	}
+	
+	public int getMaskWidth() {
+		return maskWidth;
+	}
+	public int getMaskHeight() {
+		return maskHeight;
+	}
+	
+	public int getMaskX() { 
+		return maskX;
+	}
+	public int getMaskY() {
+		return maskY;
+	}
+
+	public void setWidth(int newWidth) {
+		Width = newWidth;
+	}
+	public void setHeight(int newHeight) {
+		Height = newHeight;
+	}
+	
+	public void setX(int newX) { 
+		x = newX;
+	}
+	public void setY(int newY) { 
+		y = newY;
+	}
+	public void setZ(int newZ) { 
+		z = newZ;
+	}
+	
+	public void setMaskWidth(int newMaskWidth) {
+		maskWidth = newMaskWidth;
+	}
+	public void setMaskHeight(int newMaskHeight) {
+		maskHeight = newMaskHeight;
+	}
+	
+	public void setMaskX(int newMaskX) {
+		maskX = newMaskX;
+	}
+	public void setMaskY(int newMaskY) {
+		maskY = newMaskY;
+	}
+	 
+	public void update() {
+		
+	}
+	
+	public void render(Graphics g) {
+		g.drawImage(sprite, x, y, null);
+	}
+	
+}

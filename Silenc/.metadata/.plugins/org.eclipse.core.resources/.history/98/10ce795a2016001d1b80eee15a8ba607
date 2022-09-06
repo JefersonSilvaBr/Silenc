@@ -1,0 +1,23 @@
+package com.GupiGames.Entities;
+
+import java.awt.Graphics;
+
+import com.GupiGames.FSM.GameState;
+import com.GupiGames.World.World;
+import com.GupiGames.main.Game;
+
+public class Game_GameOver implements GameState {
+
+	@Override
+	public void update() {
+		Game.player.soul-=10;
+		World.reset();
+		Game.map = new World("/mapJam-0" + (Game.currentMap) + ".png");
+	}
+
+	@Override
+	public void render(Graphics g) {
+		
+	}
+
+}

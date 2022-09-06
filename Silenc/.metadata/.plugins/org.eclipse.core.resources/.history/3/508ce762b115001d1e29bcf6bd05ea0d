@@ -1,0 +1,12 @@
+package com.GupiGames.Graphics;
+
+import java.awt.Graphics;
+
+import com.GupiGames.main.Game;
+
+public class UI extends Game{
+	
+	public void render(Graphics g) {
+		
+	}
+}

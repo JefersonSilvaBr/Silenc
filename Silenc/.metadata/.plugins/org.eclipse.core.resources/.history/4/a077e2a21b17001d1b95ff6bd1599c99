@@ -1,0 +1,46 @@
+package com.GupiGames.Sounds;
+
+import java.applet.Applet;
+import java.applet.AudioClip;
+import java.net.URL;
+
+public class Sounds {
+
+	private URL clip;
+	@SuppressWarnings("unused")
+	private String name;
+	
+//	public static final Sound musicBackground = new Sound("/music.wav");
+//	public static final Sound hurtEffect = new Sound("/hurt.wav");
+	
+
+	@SuppressWarnings("unused")
+	private void Sound(String name) {
+		try {
+			clip = Sounds.class.getResource(name);
+		}catch(Throwable e) {}
+	}
+	
+	public void play() {
+		try {
+			new Thread() {
+				@SuppressWarnings("deprecation")
+				public void run() {
+					clip.play();
+				}
+			}.start();
+		}catch(Throwable e) {}
+	}
+	
+	public void loop() {
+		try {
+			new Thread() {
+				@SuppressWarnings("deprecation")
+				public void run() {
+					clip.loop();
+				}
+			}.start();
+		}catch(Throwable e) {}
+	}
+	
+}

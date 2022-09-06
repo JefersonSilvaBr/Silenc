@@ -1,0 +1,29 @@
+package com.GupiGames.FSM;
+
+import java.awt.Graphics;
+
+import com.GupiGames.main.Game;
+
+public interface GameState {
+	
+	public boolean isOn = true;
+	public int opacity = 0;
+
+	public void update();
+	
+	public void render(Graphics g);
+	
+
+	public static void transit(Graphics g) {
+		
+		if(Game.gameState.isOn) {
+			GameState.opacity+=10;
+			if(GameState.opacity >= 255) {
+				
+			}
+		}
+		
+	}
+	
+	
+}

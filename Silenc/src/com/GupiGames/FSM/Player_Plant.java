@@ -1,0 +1,60 @@
+package com.GupiGames.FSM;
+
+import com.GupiGames.Entities.Tree;
+import com.GupiGames.Entities.body;
+import com.GupiGames.Graphics.PlayerAni;
+import com.GupiGames.World.World;
+import com.GupiGames.main.Game;
+
+public class Player_Plant implements PlayerState {
+
+	private boolean start = true;
+	private int tick;
+	private int Stage;
+	
+	public Player_Plant() {
+		Game.player.curAnimation = 0;
+	}
+
+	public void plant() {
+		Game.player.currentAni = PlayerAni.dead;
+		if(start) {
+			tick++;
+			if(Stage == 3 && tick >= 29 && tick != 30) {
+				Game.player.bigSoul = false;
+				Game.entities.add(new Tree(Game.playerSheet.getSprite(0, 0, 16, 16), (int) (Game.player.getX()),  (int) (Game.player.getY()), 16, 16, "visible"));
+				Game.entities.add(new body(PlayerAni.dead[3], (int) (Game.player.getX()),  (int) (Game.player.getY()), 16, 16));
+				Game.player.setX(World.spawnX);
+				Game.player.setY(World.spawnY);
+				PlayerState.setState(new Player_Idle());
+				start = false;
+			}
+			if(tick >= 30) { 
+				Stage++;
+				Game.player.curAnimation++;
+				tick = 0;
+			}
+		}
+	}
+
+	public void interact() {}
+
+	public void climb() {}
+	
+	public void idle() {}
+
+	public void walk() {}
+
+	public void jump() {}
+
+	public void fall() {}
+
+	public void feedback() {}
+
+	@Override
+	public void dead() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

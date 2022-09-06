@@ -1,0 +1,64 @@
+package com.GupiGames.World;
+
+import java.awt.Graphics;
+import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
+
+import com.GupiGames.Entities.NoteOfSouls;
+import com.GupiGames.FSM.Game.Game_Transit;
+import com.GupiGames.Graphics.PlayerAni;
+import com.GupiGames.main.Game;
+
+public class Portal extends Tile{
+	
+	private static final long serialVersionUID = -4058393130610057851L;
+	public int frame = 0, maxFrame = 10, curAnimation = 0;
+
+	public Portal(BufferedImage sprite, int x, int y, int Width, int Height) {
+		super(sprite, x, y, Width, Height);
+		maskX = 5; maskY = 1;
+		maskWidth = 6; maskHeight = 6;
+	}
+	
+	public void animation() {
+		frame++;
+		if(frame >= maxFrame) {
+			curAnimation++;
+			frame = 0;
+		}
+		if(curAnimation >= 2) {
+			curAnimation = 0;
+		}
+	}
+	
+	public void nextLevel() {
+		
+		for(int index = 0; index < Game.souls.size(); index++) {
+			Rectangle entityCollider = new Rectangle(
+					(int)(Game.souls.get(index).getX() + Game.souls.get(index).getMaskX()),
+					(int)(Game.souls.get(index).getY() + Game.souls.get(index).getMaskY()),
+					(int)Game.souls.get(index).getMaskWidth(),
+					(int)Game.souls.get(index).getMaskHeight());
+			
+			Rectangle tileCollider = new Rectangle(
+					(int)(this.getX() + this.getMaskX()) - 1,
+					(int)(this.getY() + this.getMaskY()) - 1,
+					(int)this.getMaskWidth() + 2,
+					(int)this.getMaskHeight() + 2);
+			
+			if(tileCollider.intersects(entityCollider) && Game.souls.get(index) instanceof NoteOfSouls) {
+				Game.gameState = new Game_Transit();
+			}
+		}
+		
+	}
+	
+	public void update() {
+		animation();
+		nextLevel();
+	}
+
+	public void render(Graphics g) {
+		g.drawImage(PlayerAni.portal[curAnimation], x, y, null);
+	}
+}

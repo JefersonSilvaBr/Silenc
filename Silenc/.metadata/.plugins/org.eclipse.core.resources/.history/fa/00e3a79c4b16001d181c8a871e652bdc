@@ -1,0 +1,44 @@
+package com.GupiGames.FSM;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+
+import com.GupiGames.main.Game;
+
+public class Game_Transit implements GameState {
+	public int tick = 0;
+	public void update() {
+		tick++;
+		if(tick == 300) {
+			Game.State = "nextLevel";
+		}
+	}
+
+	public void render(Graphics g) {
+		
+		int i = 30;
+		
+		if(Game.currentMap == 0) {
+			g.setColor(Color.WHITE);
+			g.setFont(new Font("arial", Font.BOLD, 10));
+			g.drawString(" Today the story is of George,", 10+i, 40);
+			g.drawString("a jazz musician very renowned", 10+i, 60);
+			g.drawString("in the community... going to", 10+i, 80);
+			
+			g.drawString("the show of his dreams,", 10+i, 100);
+			g.drawString("believing he would make the  ", 10+i, 120);
+			g.drawString("best presentation of his story.", 10+i, 140);
+		}
+		else if(Game.currentMap == 1) {
+			g.setColor(Color.WHITE);
+			g.setFont(new Font("arial", Font.BOLD, 10));
+			g.drawString("But life is a surprise box, and", 10+i, 60);
+			g.drawString("George didn't expect the worst…", 10+i, 80);
+			
+			g.drawString("and his last memory was the", 10+i, 100);
+			g.drawString("front of a silver car.", 10+i, 120);
+		}
+	}
+
+}

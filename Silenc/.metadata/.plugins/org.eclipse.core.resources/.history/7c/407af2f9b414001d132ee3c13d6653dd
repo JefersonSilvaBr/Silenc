@@ -1,0 +1,76 @@
+package com.GupiGames.Graphics;
+
+import java.awt.image.BufferedImage;
+
+import com.GupiGames.main.Game;
+
+public class PlayerAni {
+	
+	public static BufferedImage[] idle_Right;
+	public static BufferedImage[] idle_Left;
+	
+	public static BufferedImage[] run_Right;
+	public static BufferedImage[] run_Left;
+	
+	public static BufferedImage[] interact_Right;
+	public static BufferedImage[] interact_Left;
+	
+	public static BufferedImage[] feedback_Right;
+	public static BufferedImage[] feedback_Left;
+
+	public PlayerAni() {
+		idle();
+		run();
+		interact();
+		feedback();
+	}
+	
+	public void idle() {
+		
+		idle_Right = new BufferedImage[2];
+		idle_Right[0] = Game.playerSheet.getSprite(0, 0, 16, 16);
+		idle_Right[1] = Game.playerSheet.getSprite(0, 0, 16, 16);
+		
+		idle_Left = new BufferedImage[2];
+		idle_Left[0] = Game.playerSheet.getSprite(32, 0, 16, 16);
+		idle_Left[1] = Game.playerSheet.getSprite(32, 0, 16, 16);
+
+	}
+	
+	public void run() {
+		
+		run_Right = new BufferedImage[2];
+		run_Right[0] = Game.playerSheet.getSprite(0, 16, 16, 16);
+		run_Right[1] = Game.playerSheet.getSprite(16, 16, 16, 16);
+		
+		run_Left = new BufferedImage[2];
+		run_Left[0] = Game.playerSheet.getSprite(32, 16, 16, 16);
+		idle_Left[1] = Game.playerSheet.getSprite(48, 16, 16, 16);
+		
+	}
+	
+	public void interact() {
+		
+		interact_Right = new BufferedImage[2];
+		interact_Right[0] = Game.playerSheet.getSprite(0, 32, 16, 16);
+		interact_Right[1] = Game.playerSheet.getSprite(16, 32, 16, 16);
+		
+		interact_Left = new BufferedImage[2];
+		interact_Left[0] = Game.playerSheet.getSprite(32, 32, 16, 16);
+		interact_Left[1] = Game.playerSheet.getSprite(48, 32, 16, 16);
+		
+	}
+	
+	public void feedback() {
+		
+		feedback_Right = new BufferedImage[2];
+		feedback_Right[0] = Game.playerSheet.getSprite(0, 48, 16, 16);
+		feedback_Right[1] = Game.playerSheet.getSprite(16, 48, 16, 16);
+		
+		interact_Left = new BufferedImage[2];
+		interact_Left[0] = Game.playerSheet.getSprite(32, 48, 16, 16);
+		interact_Left[1] = Game.playerSheet.getSprite(48, 48, 16, 16);
+		
+	}
+	
+}

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.GupiGames.FSM.GameState"/>
+    <fullyQualifiedTypeName name="com.GupiGames.Graphics.Spritesheets"/>
+    <fullyQualifiedTypeName name="javax.imageio.ImageIO"/>
+    <fullyQualifiedTypeName name="java.io.IOException"/>
+    <fullyQualifiedTypeName name="com.GupiGames.FSM.PlayerState"/>
+    <fullyQualifiedTypeName name="java.awt.event.KeyEvent"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="com.GupiGames.Entities.Entity"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="com.GupiGames.FSM.Player_Interact"/>
+    <fullyQualifiedTypeName name="com.GupiGames.Graphics.InitAni"/>
+    <fullyQualifiedTypeName name="java.awt.Rectangle"/>
+    <fullyQualifiedTypeName name="com.GupiGames.FSM.Player_Feedback"/>
+    <fullyQualifiedTypeName name="com.GupiGames.World.Tile"/>
+    <fullyQualifiedTypeName name="javax.swing.text.html.parser.Entity"/>
+    <fullyQualifiedTypeName name="com.GupiGames.Entities.Tree"/>
+    <fullyQualifiedTypeName name="com.GupiGames.FSM.Player_Plant"/>
+    <fullyQualifiedTypeName name="com.GupiGames.World.World"/>
+    <fullyQualifiedTypeName name="com.GupiGames.Entities.body"/>
+    <fullyQualifiedTypeName name="com.GupiGames.Graphics.PlayerAni"/>
+    <fullyQualifiedTypeName name="java.awt.Graphics"/>
+    <fullyQualifiedTypeName name="com.GupiGames.FSM.Player_Fall"/>
+    <fullyQualifiedTypeName name="com.GupiGames.FSM.Player_Dead"/>
+    <fullyQualifiedTypeName name="com.GupiGames.Entities.soul"/>
+    <fullyQualifiedTypeName name="com.GupiGames.Entities.NoteOfSouls"/>
+    <fullyQualifiedTypeName name="java.applet.AudioClip"/>
+    <fullyQualifiedTypeName name="java.applet.Applet"/>
+    <fullyQualifiedTypeName name="javax.print.DocFlavor.URL"/>
+    <fullyQualifiedTypeName name="java.net.URL"/>
+    <fullyQualifiedTypeName name="com.sun.media.sound.JavaSoundAudioClip"/>
+    <fullyQualifiedTypeName name="com.GupiGames.FSM.Game_Menu"/>
+    <fullyQualifiedTypeName name="java.awt.image.BufferedImage"/>
+    <fullyQualifiedTypeName name="java.awt.Graphics2D"/>
+    <fullyQualifiedTypeName name="com.GupiGames.main.UI"/>
+    <fullyQualifiedTypeName name="com.GupiGames.FSM.Game_Pause"/>
+    <fullyQualifiedTypeName name="com.GupiGames.FSM.Game_Credits"/>
+    <fullyQualifiedTypeName name="java.io.InputStream"/>
+    <fullyQualifiedTypeName name="java.awt.Font"/>
+    <fullyQualifiedTypeName name="java.awt.Color"/>
+    <fullyQualifiedTypeName name="com.GupiGames.Entities.Player"/>
+    <fullyQualifiedTypeName name="com.GupiGames.main.Game"/>
+    <fullyQualifiedTypeName name="com.GupiGames.Sounds.Sounds"/>
+</qualifiedTypeNameHistroy>

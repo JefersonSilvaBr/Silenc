@@ -1,0 +1,94 @@
+package com.GupiGames.World;
+
+import java.awt.Graphics;
+import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
+
+import com.GupiGames.main.Game;
+
+public class Door extends Tile{
+	
+	public String State = "close";
+	
+	public static BufferedImage open; 
+	public static BufferedImage[] close;
+	
+	public boolean trapCooldown = true;;
+	public int trapTick;
+	
+	public Door(BufferedImage sprite, int x, int y, int Width, int Height) {
+		super(sprite, x, y, Width, Height);
+		initSprite();
+	}
+	
+	public void initSprite() {
+		
+		open = Game.tilesSheet.getSprite(48, 80, 16, 16);
+		
+		close = new BufferedImage[2];
+		close[0] = Game.tilesSheet.getSprite(32, 32, 16, 16);
+		close[1] = Game.tilesSheet.getSprite(48, 32, 16, 16);
+		
+	}
+	
+	public void animation() {
+		frame++;
+		if(frame >= maxFrame) {
+			curAnimation++;
+			frame = 0;
+		}
+		if(curAnimation >= 2) {
+			curAnimation = 0;
+		}
+	}
+	
+	public void damage() {
+		
+		Rectangle entityCollider = new Rectangle(
+				(int)(Game.player.getX() + Game.player.getMaskX()),
+				(int)(Game.player.getY() + Game.player.getMaskY()),
+				(int)Game.player.getMaskWidth(),
+				(int)Game.player.getMaskHeight());
+		Rectangle tileCollider = new Rectangle(
+				(int)(this.getX() + this.getMaskX()) - 2,
+				(int)(this.getY() + this.getMaskY()),
+				(int)this.getMaskWidth() + 2,
+				(int)this.getMaskHeight());
+		
+		if(tileCollider.intersects(entityCollider)) {
+			Game.player.getSoul();
+		}
+		
+	}
+	
+	public void cooldownController() {
+		
+		if(!trapCooldown) {
+			trapTick++;
+			if(trapTick >= 60) {
+				trapCooldown = true;
+				trapTick = 0;
+			}
+		}
+	}
+	
+	public void update() {
+		
+		cooldownController();
+		if(trapCooldown) {
+			damage();
+			trapCooldown = false;
+		}
+
+	}
+
+	public void render(Graphics g) {
+		if(State == "close") {
+			g.drawImage(close[0], x, y, null);
+		}
+		else {
+			g.drawImage(open, x, y, null);
+		}
+	}
+	
+}

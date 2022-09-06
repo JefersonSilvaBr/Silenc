@@ -1,0 +1,101 @@
+package com.GupiGames.Entities;
+
+import java.awt.Graphics;
+import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
+
+import com.GupiGames.main.Game;
+
+public class soul extends Entity{
+	
+	public BufferedImage[] currentAni;
+	public BufferedImage[] soul;
+	public BufferedImage[] bigSoul;
+	private String type;
+	private int ID;
+	
+	public soul(BufferedImage sprite, int x, int y, int Width, int Height, String type) {
+		super(sprite, x, y, Width, Height);
+		this.type = type;
+		initSprite();
+	}
+	
+	public void initSprite() {
+		
+		
+		soul = new BufferedImage[2];
+		soul[0] = Game.entitiesSheet.getSprite(32, 32, 16, 16);
+		soul[1] = Game.entitiesSheet.getSprite(48, 32, 16, 16);
+		
+		bigSoul = new BufferedImage[2];
+		bigSoul[0] = Game.entitiesSheet.getSprite(32, 48, 16, 16);
+		bigSoul[1] = Game.entitiesSheet.getSprite(48, 48, 16, 16);
+		
+		if(type == "bigSoul") {
+			currentAni = bigSoul;
+		}
+		else {
+			currentAni = soul;
+		}
+		
+	}
+	
+	public void animation() {
+		frame++;
+		if(frame >= maxFrame) {
+			curAnimation++;
+			frame = 0;
+		}
+		if(curAnimation >= 2) {
+			curAnimation = 0;
+		}
+	}
+	
+	public void collider() {
+		maskWidth = 8; maskHeight = 8;
+		maskX = 3; maskY = 3;
+		for(int index = 0; index < Game.entities.size(); index++) {
+			if(Game.entities.get(index) == this) {
+				ID = index;
+			}
+		}
+	}
+	
+	public void wasConsumed() {
+		
+		Rectangle soulCollider = new Rectangle((int)this.getX(), (int)this.getY(),
+				(int)this.getMaskWidth(), (int)this.getMaskHeight());
+		
+		Rectangle playerCollider = new Rectangle((int)Game.player.getX(), (int)Game.player.getY(),
+				(int)Game.player.getMaskWidth(), (int)Game.player.getMaskHeight());
+		
+		if(soulCollider.intersects(playerCollider)) {
+			if(type == "soul") {
+				System.out.println("soul");
+				Game.player.soul++;
+				selfDestroy();
+			}
+			else {
+				System.out.println("bigSoul");
+				Game.player.bigSoul = true;
+				selfDestroy();
+			}
+		}
+	}
+	
+	public void selfDestroy() {
+		Game.entities.remove(ID);
+		return;
+	}
+	
+	public void update() {
+		animation();
+		collider();
+		wasConsumed();
+	}
+	
+	public void render(Graphics g) {
+		g.drawImage(currentAni[curAnimation], x, y, null);
+	}
+	
+}

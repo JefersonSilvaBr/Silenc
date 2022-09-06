@@ -1,0 +1,33 @@
+package com.GupiGames.main;
+
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+
+public class UI {
+	
+	public static BufferedImage bigSoul_void = Game.entitiesSheet.getSprite(48, 0, 16, 16);
+	public static BufferedImage bigSoul_full = Game.entitiesSheet.getSprite(32, 0, 16, 16);
+	
+	public static BufferedImage soul_void = Game.entitiesSheet.getSprite(48, 16, 16, 16);
+	public static BufferedImage soul_full = Game.entitiesSheet.getSprite(32, 16, 16, 16);
+	
+	public static void soulsUI(Graphics g) {
+		
+		g.drawImage(soul_void, 27, 0, null);
+		g.drawImage(soul_void, 38, 0, null);
+		
+		switch(Game.player.soul) 
+		{
+		
+		case 1:
+			g.drawImage(soul_full, 27, 0, null);
+		break;
+		
+		case 2:
+			g.drawImage(soul_full, 38, 0, null);
+		break;
+		
+		}
+	}
+	
+}

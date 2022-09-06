@@ -1,0 +1,15 @@
+package com.GupiGames.main;
+
+public class UI {
+
+	
+	public void soulsUI() {
+		switch(Game.player.so) 
+		{
+		
+		
+		
+		}
+	}
+	
+}

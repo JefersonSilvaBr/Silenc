@@ -1,0 +1,34 @@
+package com.GupiGames.FSM;
+
+import com.GupiGames.World.World;
+import com.GupiGames.main.Game;
+
+public class Player_Fall implements PlayerState {
+
+	@Override
+	public void interact() {
+		
+	}
+
+	@Override
+	public void idle() {
+		if(!(World.isFall(Game.player, 1))) {
+			PlayerState.setState(new Player_Idle());
+		}
+	}
+
+	@Override
+	public void walk() {
+		
+	}
+
+	@Override
+	public void jump() {}
+
+	@Override
+	public void fall() {
+		Game.player.setZ(0);
+		Game.player.setY((int)Game.player.getY() + 1);
+	}
+
+}

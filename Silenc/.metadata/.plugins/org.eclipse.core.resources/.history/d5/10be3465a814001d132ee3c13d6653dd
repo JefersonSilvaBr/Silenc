@@ -1,0 +1,36 @@
+package com.GupiGames.FSM;
+
+import com.GupiGames.Entities.NoteOfSouls;
+import com.GupiGames.main.Game;
+
+public class Player_Interact implements PlayerState {
+
+	@Override
+	public void interact() {
+		Game.souls.add(new NoteOfSouls(Game.playerSheet.getSprite(0, 0, 16, 16), 16, 16, 16, 16, 1));
+	}
+
+	@Override
+	public void idle() {
+		
+	}
+
+	@Override
+	public void walk() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void jump() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void fall() {
+		// TODO Auto-generated method stub
+
+	}
+
+}

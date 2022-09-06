@@ -1,0 +1,82 @@
+package com.GupiGames.Entities;
+
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+
+import com.GupiGames.FSM.PlayerState;
+import com.GupiGames.FSM.Player_Idle;
+import com.GupiGames.Graphics.PlayerAni;
+
+public class Player extends Entity{
+
+	public PlayerState playerState;
+	
+	public static boolean up, left, right, enter;
+	public static boolean jumpCooldown = true;
+	public static boolean attackCooldown = true;
+	public BufferedImage[] currentAni;
+	
+	public int jumpTick = 0;
+	public int attackTick = 0;
+	
+	public Player(BufferedImage sprite, int x, int y, int Width, int Height) {
+		super(sprite, x, y, Width, Height);
+		
+		maskWidth = 8;  maskHeight = 15;
+		maskX = 4 ; maskY = 1; maxFrame = 30;
+		
+		playerState = new Player_Idle();
+		currentAni = PlayerAni.idle_Right;
+	}
+	
+	public void playerController() {
+		playerState.interact();
+		playerState.idle();
+		playerState.walk();
+		playerState.fall();
+		playerState.jump();
+	}
+	
+	public void cooldownController() {
+		
+		if(!jumpCooldown) {
+			jumpTick++;
+			if(jumpTick >= 30) {
+				jumpCooldown = true;
+				jumpTick = 0;
+			}
+		}
+
+		
+		if(!attackCooldown) {
+			attackTick++;
+			if(attackTick >= 60) {
+				attackCooldown = true;
+				attackTick = 0;
+			}
+		}
+		
+	}
+	
+	public void animation() {
+		frame++;
+		if(frame >= maxFrame) {
+			curAnimation++;
+			frame = 0;
+		}
+		if(curAnimation >= 2) {
+			curAnimation = 0;
+		}
+	}
+	
+	public void update() {
+		animation();
+		cooldownController();
+		playerController();
+	}
+	
+	public void render(Graphics g) {
+		g.drawImage(currentAni[curAnimation], x, y, null);
+	}	
+	
+}

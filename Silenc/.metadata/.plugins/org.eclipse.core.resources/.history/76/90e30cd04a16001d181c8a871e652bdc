@@ -1,0 +1,31 @@
+package com.GupiGames.FSM;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+
+public class Game_Transit implements GameState {
+	public int tick = 0;
+	public void update() {
+//		tick++;
+//		if(false) {
+//			Game.State = "nextLevel";
+//		}
+	}
+
+	public void render(Graphics g) {
+		
+		int i = 30;
+		
+		g.setColor(Color.WHITE);
+		g.setFont(new Font("arial", Font.BOLD, 10));
+		g.drawString(" Today the story is of George,", 10+i, 40);
+		g.drawString("a jazz musician very renowned", 10+i, 50);
+		g.drawString("in the community... going to", 10+i, 60);
+		
+		g.drawString("the show of his dreams,", 10+i, 70);
+		g.drawString("believing he would make the  ", 10+i, 80);
+		g.drawString("best presentation of his story.", 10+i, 90);
+	}
+
+}

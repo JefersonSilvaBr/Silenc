@@ -1,0 +1,221 @@
+package com.GupiGames.World;
+
+import java.awt.Graphics;
+import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
+import com.GupiGames.Entities.Entity;
+import com.GupiGames.main.Game;
+
+public class World extends Rectangle{
+	
+	public int WIDTH, HEIGHT;
+	public Tile[] tiles;
+	
+	
+	public World(String path) {
+		try {
+			
+			BufferedImage map = ImageIO.read(getClass().getResource(path));
+			WIDTH = map.getWidth();
+			HEIGHT = map.getHeight();
+			tiles = new Tile[map.getWidth() *  map.getHeight()];
+			
+			int[] pixels = new int[map.getWidth() *  map.getHeight()];
+			map.getRGB(0, 0, map.getWidth(), map.getHeight(), pixels, 0 , map.getWidth());
+			
+			
+			for(int axisX = 0; axisX < WIDTH; axisX++) {
+				
+				for(int axisY = 0; axisY < HEIGHT; axisY++) {
+					
+					int currentPixel = pixels[axisX + (axisY * map.getWidth())];
+					
+					switch (currentPixel) {
+				
+					case(0xFF3f3f74):
+						tiles[axisX + (axisY * map.getWidth())] = new FloorTile(FloorTile.FloorTile, axisX*16, axisY*16, 16, 16);
+						tiles[axisX + (axisY * map.getWidth())].setMaskWidth(16);
+						tiles[axisX + (axisY * map.getWidth())].setMaskHeight(16);
+					break;
+					case(0xFFac3232):
+						tiles[axisX + (axisY * map.getWidth())] = new FloorTile(FloorTile.FloorTile_Right, axisX*16, axisY*16, 16, 16);
+					tiles[axisX + (axisY * map.getWidth())].setMaskWidth(16);
+					tiles[axisX + (axisY * map.getWidth())].setMaskHeight(16);
+					break;
+					case(0xFFd95763):
+						tiles[axisX + (axisY * map.getWidth())] = new FloorTile(FloorTile.FloorTile_Left, axisX*16, axisY*16, 16, 16);
+					tiles[axisX + (axisY * map.getWidth())].setMaskWidth(16);
+					tiles[axisX + (axisY * map.getWidth())].setMaskHeight(16);
+					break;
+					case(0xFFdf7126):
+						tiles[axisX + (axisY * map.getWidth())] = new FloorTile(WallTile.WallTile_Left, axisX*16, axisY*16, 16, 16);
+					tiles[axisX + (axisY * map.getWidth())].setMaskWidth(16);
+					tiles[axisX + (axisY * map.getWidth())].setMaskHeight(16);
+					break;
+					case(0xFF8f563b):
+						tiles[axisX + (axisY * map.getWidth())] = new FloorTile(WallTile.WallTile_Right, axisX*16, axisY*16, 16, 16);
+					tiles[axisX + (axisY * map.getWidth())].setMaskWidth(16);
+					tiles[axisX + (axisY * map.getWidth())].setMaskHeight(16);
+					break;
+					
+					case(0xFF76428a):
+						tiles[axisX + (axisY * map.getWidth())] = new WallTile(WallTile.WallTile_left, axisX*16, axisY*16, 16, 16);
+					tiles[axisX + (axisY * map.getWidth())].setMaskWidth(16);
+					tiles[axisX + (axisY * map.getWidth())].setMaskHeight(16);
+					break;
+					case(0xFF595652):
+						tiles[axisX + (axisY * map.getWidth())] = new WallTile(WallTile.WallTile_right, axisX*16, axisY*16, 16, 16);
+					tiles[axisX + (axisY * map.getWidth())].setMaskWidth(16);
+					tiles[axisX + (axisY * map.getWidth())].setMaskHeight(16);
+					break;
+					case(0xFF323c39):
+						tiles[axisX + (axisY * map.getWidth())] = new WallTile(WallTile.WallTile_Down, axisX*16, axisY*16, 16, 16);
+					tiles[axisX + (axisY * map.getWidth())].setMaskWidth(16);
+					tiles[axisX + (axisY * map.getWidth())].setMaskHeight(16);
+					break;
+					case(0xFF45283c):
+						tiles[axisX + (axisY * map.getWidth())] = new WallTile(WallTile.WallTile_up, axisX*16, axisY*16, 16, 16);
+					tiles[axisX + (axisY * map.getWidth())].setMaskWidth(16);
+					tiles[axisX + (axisY * map.getWidth())].setMaskHeight(16);
+					break;
+					
+					case(0xFF5fcde4):
+						tiles[axisX + (axisY * map.getWidth())] = new TrapTile(TrapTile.spike_Inverse_down, axisX*16, axisY*16, 16, 16);
+						tiles[axisX + (axisY * map.getWidth())].setMaskWidth(16);
+						tiles[axisX + (axisY * map.getWidth())].setMaskHeight(5);
+					break;
+					case(0xFF222034):
+						tiles[axisX + (axisY * map.getWidth())] = new TrapTile(TrapTile.spike, axisX*16, axisY*16, 16, 16);
+						tiles[axisX + (axisY * map.getWidth())].setMaskY(10);
+						tiles[axisX + (axisY * map.getWidth())].setMaskWidth(16);
+						tiles[axisX + (axisY * map.getWidth())].setMaskHeight(6);
+					break;
+					
+					case(0xFFb5883b):
+						tiles[axisX + (axisY * map.getWidth())] = new Door(WallTile.Blank, axisX*16, axisY*16, 16, 16);
+						tiles[axisX + (axisY * map.getWidth())].setMaskX(4);
+						tiles[axisX + (axisY * map.getWidth())].setMaskWidth(8);
+						tiles[axisX + (axisY * map.getWidth())].setMaskHeight(16);
+					break;
+					
+					case(0xFFfbf236):
+						tiles[axisX + (axisY * map.getWidth())] = new pressurePlates(WallTile.Blank, axisX*16, axisY*16, 16, 16, axisX + (axisY * map.getWidth()));
+						tiles[axisX + (axisY * map.getWidth())].setMaskY(14);
+						tiles[axisX + (axisY * map.getWidth())].setMaskWidth(14);
+						tiles[axisX + (axisY * map.getWidth())].setMaskHeight(2);
+					break;
+
+					default:
+						tiles[axisX + (axisY * map.getWidth())] = new Tile(WallTile.Blank, axisX*16, axisY*16, 16, 16);					
+					break;
+					
+					
+					}
+					
+				}
+
+			}
+			
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public static boolean isFree(Entity entity,int plusX, int plusY) {
+		
+		Rectangle entityCollider = new Rectangle(
+				(int)(entity.getX() + entity.getMaskX()) + plusX,
+				(int)(entity.getY() + entity.getMaskY()) + plusY,
+				(int)entity.getMaskWidth(),
+				(int)entity.getMaskHeight());
+		
+		int xStart = ((int)entity.getX() - 8) >> 4;
+		int yStart = ((int)entity.getY() - 8) >> 4;
+		
+		int xFinal = xStart + 3;
+		int yFinal = yStart + 3;
+				
+		for(int axisX = xStart; axisX < xFinal; axisX++) {
+			for(int axisY = yStart; axisY < yFinal; axisY++) {
+						
+				if(axisX < 0 || axisY < 0 || axisX >= Game.map.WIDTH || axisY >= Game.map.HEIGHT) {
+					continue;
+				}
+				
+				Tile tile = Game.map.tiles[axisX + (axisY * Game.map.WIDTH)];
+				Rectangle tileCollider = new Rectangle(
+						(int)(tile.getX() + tile.getMaskX()), (int)(tile.getY() + tile.getMaskY()),
+						(int)tile.getMaskWidth(), (int)tile.getMaskHeight());
+				
+				if(tileCollider.intersects(entityCollider) && (tile instanceof WallTile || tile instanceof FloorTile ||
+						tile instanceof TrapTile)) {
+					return false;
+				}
+				if(tileCollider.intersects(entityCollider) && tile instanceof Door) {
+					
+					return false;
+				}
+				
+			}
+		}
+		return true;
+	}
+	
+	public static boolean isFall(Entity entity, int plusY) {
+		
+		Rectangle entityCollider = new Rectangle(
+				(int)(entity.getX() + entity.getMaskX()),
+				(int)(entity.getY() + entity.getMaskY()) + plusY,
+				(int)entity.getMaskWidth(),
+				(int)entity.getMaskHeight());
+		
+		int xStart = ((int)entity.getX() - 8) >> 4;
+		int yStart = ((int)entity.getY() - 8) >> 4;
+		
+		int xFinal = xStart + 3;
+		int yFinal = yStart + 3;
+				
+		for(int axisX = xStart; axisX < xFinal; axisX++) {
+			for(int axisY = yStart; axisY < yFinal; axisY++) {
+						
+				if(axisX < 0 || axisY < 0 || axisX >= Game.map.WIDTH || axisY >= Game.map.HEIGHT) {
+					continue;
+				}
+				
+				Tile tile = Game.map.tiles[axisX + (axisY * Game.map.WIDTH)];
+				Rectangle tileCollider = new Rectangle(
+						(int)(tile.getX()  + tile.getMaskX()), (int)(tile.getY()  + tile.getMaskY()),
+						(int)tile.getMaskWidth(), (int)tile.getMaskHeight());
+				
+				if(tileCollider.intersects(entityCollider) && tile instanceof FloorTile) {
+					return false;
+				}
+				
+			}
+		}
+		return true;
+	}
+	
+	public void update() {
+		
+		for(int index = 0; index < tiles.length; index++) {
+			tiles[index].update();
+		}
+		
+	}
+	
+	public void render(Graphics g) {
+		
+		for(int index = 0; index < tiles.length; index++) {
+			tiles[index].render(g);
+		}
+
+	}
+
+}

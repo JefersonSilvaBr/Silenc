@@ -1,0 +1,30 @@
+package com.GupiGames.FSM;
+
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+
+import com.GupiGames.Graphics.Spritesheets;
+import com.GupiGames.main.Game;
+
+public class Game_Menu implements GameState {
+	
+	public Game_Menu() {
+	}
+	
+	public static BufferedImage ButtonPlay = Game.UISheet.getSprite(0, 0, 48, 16);
+	public static BufferedImage ButtonStory = Game.UISheet.getSprite(0, 16, 48, 16);
+	public static BufferedImage ButtonCredits = Game.UISheet.getSprite(0, 32, 48, 16);
+	public static BufferedImage ButtonMenu = Game.UISheet.getSprite(0, 48, 48, 16);
+	public static BufferedImage ButtonExit = Game.UISheet.getSprite(0, 64, 48, 16);
+	public static BufferedImage ButtonMask_on = Game.UISheet.getSprite(48, 0, 50, 18);
+	public static BufferedImage ButtonMask_off = Game.UISheet.getSprite(48, 18, 50, 18);
+	
+
+	public void update() {
+	}
+
+	public void render(Graphics g) {
+		g.drawImage(ButtonPlay, 16, 120, null);
+	}
+
+}

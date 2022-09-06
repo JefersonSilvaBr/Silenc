@@ -1,0 +1,15 @@
+package com.GupiGames.FSM.Game;
+
+import java.awt.Graphics;
+
+import com.GupiGames.FSM.GameState;
+
+public class Game_Exit implements GameState {
+
+	public void update() {
+		System.exit(1);
+	}
+
+	public void render(Graphics g) {}
+
+}

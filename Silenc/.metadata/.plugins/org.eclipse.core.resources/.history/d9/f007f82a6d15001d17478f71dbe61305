@@ -1,0 +1,13 @@
+package com.GupiGames.Entities;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+
+public class Tree extends Entity{
+
+	public Tree(BufferedImage sprite, int x, int y, int Width, int Height) {
+		super(sprite, x, y, Width, Height);
+	}
+
+}

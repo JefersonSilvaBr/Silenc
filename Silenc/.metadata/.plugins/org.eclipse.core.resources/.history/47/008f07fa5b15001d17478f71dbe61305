@@ -1,0 +1,38 @@
+package com.GupiGames.FSM;
+
+import java.awt.Graphics;
+
+import com.GupiGames.main.Game;
+
+public class Game_Play implements GameState {
+
+	public void update() {
+		Game.map.update();
+		Game.player.update();
+		for(int index = 0; index < Game.souls.size(); index++) {
+			Game.souls.get(index).update();
+		}
+		for(int index = 0; index < Game.doors.size(); index++) {
+			Game.doors.get(index).update();
+		}
+		for(int index = 0; index < Game.pressurePlates.size(); index++) {
+			Game.pressurePlates.get(index).update();
+		}
+		
+	}
+
+	public void render(Graphics g) {
+		Game.map.render(g);
+		Game.player.render(g);
+		for(int index = 0; index < Game.souls.size(); index++) {
+			Game.souls.get(index).render(g);
+		}
+		for(int index = 0; index < Game.doors.size(); index++) {
+			Game.doors.get(index).render(g);
+		}
+		for(int index = 0; index < Game.pressurePlates.size(); index++) {
+			Game.pressurePlates.get(index).render(g);
+		}
+	}
+
+}

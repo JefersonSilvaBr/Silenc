@@ -1,0 +1,24 @@
+package com.GupiGames.FSM;
+
+import java.awt.Font;
+import java.awt.Graphics;
+
+import com.GupiGames.main.Game;
+
+public class Game_Transit implements GameState {
+	public int tick = 0;
+	public void update() {
+		tick++;
+		if(tick == 300) {
+			Game.State = "nextLevel";
+		}
+	}
+
+	public void render(Graphics g) {
+		
+		g.setFont(new Font("arial", Font.BOLD, 8));
+		g.drawString(" Today the story is of George, a jazz musician very renowned in the community...", 10, 50);
+		
+	}
+
+}

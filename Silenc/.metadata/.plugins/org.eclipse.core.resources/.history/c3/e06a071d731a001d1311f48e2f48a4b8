@@ -1,0 +1,39 @@
+package com.GupiGames.Sounds;
+
+import java.applet.Applet;
+import java.applet.AudioClip;
+
+import com.GupiGames.main.Game;
+
+public class Sounds {
+
+	private AudioClip clip;
+	
+	public static final Sounds musicBackground = new Sounds("/Whoosh,Organic,Fabric,Glove,Airy,Breathy,Punchy.wav");
+	
+	private Sounds(String name) {
+		try {
+		}catch(Throwable e) {}
+	}
+	
+	public void play() {
+		try {
+			new Thread() {
+				public void run() {
+					clip.play();
+				}
+			}.start();
+		}catch(Throwable e) {}
+	}
+	
+	public void loop() {
+		try {
+			new Thread() {
+				public void run() {
+					clip.loop();
+				}
+			}.start();
+		}catch(Throwable e) {}
+	}
+	
+}

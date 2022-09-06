@@ -1,0 +1,6 @@
+package com.GupiGames.Graphics;
+
+public class Sound {
+
+	private AudioClip clip;
+}

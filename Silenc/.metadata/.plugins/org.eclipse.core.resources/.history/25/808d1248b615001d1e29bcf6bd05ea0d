@@ -1,0 +1,28 @@
+package com.GupiGames.FSM;
+
+import com.GupiGames.Entities.Player;
+import com.GupiGames.Entities.Tree;
+import com.GupiGames.Graphics.PlayerAni;
+import com.GupiGames.main.Game;
+
+public class Player_Dead implements PlayerState {
+
+	public void interact() {}
+	
+	public void climb() {}
+
+	public void walk() {}
+
+	public void jump() {}
+
+	public void fall() {}
+
+	public void feedback() {}
+
+	public void plant() {}
+	
+	public void dead() {
+		
+	}
+
+}

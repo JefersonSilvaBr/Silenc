@@ -1,0 +1,83 @@
+package com.GupiGames.FSM;
+
+import java.awt.Rectangle;
+
+import com.GupiGames.Entities.Player;
+import com.GupiGames.Entities.Tree;
+import com.GupiGames.Graphics.PlayerAni;
+import com.GupiGames.World.World;
+import com.GupiGames.main.Game;
+
+public class Player_Idle implements PlayerState {
+
+	public void interact() {
+		if(Player.enter && Player.attackCooldown == true) {
+			if(Player.side == "Right" && World.isFree(Game.player, 10, 0)) {
+				PlayerState.setState(new Player_Interact());
+			}
+			else if(Player.side == "Left" && World.isFree(Game.player, -10, 0)) {
+				PlayerState.setState(new Player_Interact());
+			}	
+		}
+	}
+
+	public void idle() {
+		if(Player.side == "Right") {
+			Game.player.currentAni = PlayerAni.idle_Right;
+		}
+		else if(Player.side == "Left") {
+			Game.player.currentAni = PlayerAni.idle_Left;
+		}	
+	}
+
+	public void walk() {
+		if(Player.right || Player.left) {
+			PlayerState.setState(new Player_Walk());
+		}
+	}
+
+	public void jump() {
+		if(Player.up && World.isFree(Game.player, 0, -3) && Player.jumpCooldown == true) {
+			PlayerState.setState(new Player_Jump());
+		}
+
+	}
+
+	public void fall() {
+		if(World.isFall(Game.player, 1)) {
+			PlayerState.setState(new Player_Fall());
+		}
+	}
+
+	public void feedback() {
+		
+	}
+
+	public void climb() {
+		
+		Rectangle playerCollider = new Rectangle(
+				(int)(Game.player.getX() + Game.player.getMaskX()),
+				(int)(Game.player.getY() + Game.player.getMaskY()),
+				(int)Game.player.getMaskWidth(),
+				(int)Game.player.getMaskHeight());
+		for(int index = 0; index < Game.entities.size(); index++) {
+			
+			if(Game.entities.get(index) instanceof Tree) {
+				
+				Rectangle entityCollider = new Rectangle(
+						(int)(Game.entities.get(index).getX() + Game.entities.get(index).getMaskX()),
+						(int)(Game.entities.get(index).getY() + Game.entities.get(index).getMaskY()),
+						(int)Game.entities.get(index).getMaskWidth(),
+						(int)Game.entities.get(index).getMaskHeight());
+				
+				if(playerCollider.intersects(entityCollider)) {
+					PlayerState.setState(new Player_Climb());
+				}
+				
+			}
+			
+		}
+		PlayerState.setState(new Player_Idle());
+	}
+
+}

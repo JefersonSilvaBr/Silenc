@@ -1,0 +1,58 @@
+package com.GupiGames.FSM;
+
+import java.awt.Graphics;
+
+import com.GupiGames.main.Game;
+import com.GupiGames.main.UI;
+
+public class Game_Play implements GameState {
+	
+	public Game_Play() {
+		Game.State ="";
+	}
+
+	public void update() {
+		
+		Game.map.update();
+		Game.player.update();
+		for(int index = 0; index < Game.souls.size(); index++) {
+			Game.souls.get(index).update();
+		}
+		for(int index = 0; index < Game.entities.size(); index++) {
+			Game.entities.get(index).update();
+		}
+		
+		if(Game.escape){
+			Game.save = this;
+			Game.gameState = new Game_Pause();
+		}
+		
+	}
+
+	public void render(Graphics g) {
+		Game.map.render(g);
+		for(int index = 0; index < Game.souls.size(); index++) {
+			Game.souls.get(index).render(g);
+		}
+		for(int index = 0; index < Game.entities.size(); index++) {
+			Game.entities.get(index).render(g);
+		}
+		
+		if(Game.currentMap == 1 && Game.tutorial) {
+			g.drawImage(UI.tutorial_1, 0, 14, null);
+		}
+		else if(Game.currentMap == 2 && Game.tutorial) {
+			g.drawImage(UI.tutorial_2, 90, 60, null);
+		}
+		else if(Game.currentMap == 3 && Game.tutorial) {
+			g.drawImage(UI.tutorial_3, 113, 50, null);
+			g.drawImage(UI.tutorial_03, 80, 120, null);
+			
+		}
+		
+		Game.player.render(g);
+		UI.soulsUI(g);
+		
+	}
+
+}

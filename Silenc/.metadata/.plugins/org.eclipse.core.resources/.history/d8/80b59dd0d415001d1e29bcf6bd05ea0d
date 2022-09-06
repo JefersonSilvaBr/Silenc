@@ -1,0 +1,23 @@
+package com.GupiGames.Graphics;
+
+import java.lang.instrument.*;
+
+
+
+public class Sound {
+	
+	private static Sound musica;
+
+	public void play(String name) {
+		musica = new Sound(URL.);
+	}
+	
+	public void loop(String name) {
+		
+	}
+	
+	public void Stop(String name) {
+		
+	}
+	
+}

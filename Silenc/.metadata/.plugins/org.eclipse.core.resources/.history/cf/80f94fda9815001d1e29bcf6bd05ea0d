@@ -1,0 +1,24 @@
+package com.GupiGames.FSM;
+
+public class Player_Plant implements PlayerState {
+
+	public void plant() {
+		
+		
+	}
+
+	public void interact() {}
+
+	public void climb() {}
+	
+	public void idle() {}
+
+	public void walk() {}
+
+	public void jump() {}
+
+	public void fall() {}
+
+	public void feedback() {}
+
+}

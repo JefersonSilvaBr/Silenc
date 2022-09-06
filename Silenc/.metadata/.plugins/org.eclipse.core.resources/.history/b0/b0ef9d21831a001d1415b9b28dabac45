@@ -1,0 +1,10 @@
+package com.GupiGames.Sounds;
+
+import javax.sound.*;
+
+public class Sounds {
+
+	public Sounds() {
+		
+	}
+}

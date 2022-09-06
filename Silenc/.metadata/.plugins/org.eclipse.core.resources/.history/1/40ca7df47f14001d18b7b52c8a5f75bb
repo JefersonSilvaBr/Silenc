@@ -1,0 +1,5 @@
+package com.GupiGames.FSM;
+
+public interface PlayerState {
+
+}

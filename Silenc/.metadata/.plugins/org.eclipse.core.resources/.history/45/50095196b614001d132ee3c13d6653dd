@@ -1,0 +1,45 @@
+package com.GupiGames.FSM;
+
+import com.GupiGames.Entities.NoteOfSouls;
+import com.GupiGames.Entities.Player;
+import com.GupiGames.Graphics.PlayerAni;
+import com.GupiGames.main.Game;
+
+public class Player_Interact implements PlayerState {
+
+	public int tick = 0;
+
+	public void interact() {
+		Game.player.curAnimation = 0;
+		
+		if(Player.side == "Right") {
+			Game.player.currentAni = PlayerAni.interact_Right;
+		}
+		else if(Player.side == "Left") {
+			Game.player.currentAni = PlayerAni.interact_Left;
+		}
+		
+		Player.attackCooldown = false;
+		if(tick == 0) {
+			Game.souls.add(new NoteOfSouls(Game.playerSheet.getSprite(0, 0, 16, 16), (int)(Game.player.getX()), (int)(Game.player.getY()), 16, 16, 1));
+		}
+		tick++;
+	}
+	
+	@Override
+	public void idle() {
+		if(tick >= 21) {
+			PlayerState.setState(new Player_Idle());
+		}
+	}
+
+	@Override
+	public void walk() {}
+
+	@Override
+	public void jump() {}
+
+	@Override
+	public void fall() {}
+
+}

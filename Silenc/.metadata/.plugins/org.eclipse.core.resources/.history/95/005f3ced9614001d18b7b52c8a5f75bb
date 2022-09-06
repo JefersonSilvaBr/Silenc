@@ -1,0 +1,15 @@
+package com.GupiGames.FSM;
+
+public interface PlayerState {
+
+	public void interact();
+	
+	public void idle();
+	
+	public void walk();
+	
+	public void jump();
+	
+	public void fall();
+	
+}

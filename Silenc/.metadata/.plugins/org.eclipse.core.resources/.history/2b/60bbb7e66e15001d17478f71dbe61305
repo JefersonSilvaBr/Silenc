@@ -1,0 +1,92 @@
+package com.GupiGames.FSM;
+
+import java.awt.Rectangle;
+
+import com.GupiGames.Entities.Player;
+import com.GupiGames.Entities.Tree;
+import com.GupiGames.Graphics.PlayerAni;
+import com.GupiGames.World.World;
+import com.GupiGames.main.Game;
+
+public class Player_Climb implements PlayerState {
+
+	@Override
+	public void interact() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void climb() {
+		if(Player.right && World.isFree(Game.player, 1, 0)) {
+			Game.player.currentAni = PlayerAni.run_Right;
+			Game.player.setX((int)Game.player.getX() + 1);
+		}
+		else if(Player.left && World.isFree(Game.player, -1, 0)) {
+			Game.player.currentAni = PlayerAni.run_Left;
+			Game.player.setX((int)Game.player.getX() - 1);
+		}
+		if(Player.down && World.isFree(Game.player, 0, 1)) {
+			Game.player.currentAni = PlayerAni.run_Right;
+			Game.player.setY((int)Game.player.getY() + 1);
+		}
+		else if(Player.up && World.isFree(Game.player, 0, -1)) {
+			Game.player.currentAni = PlayerAni.run_Left;
+			Game.player.setY((int)Game.player.getY() -1);
+		}
+	}
+
+	@Override
+	public void idle() {
+		Rectangle playerCollider = new Rectangle(
+			(int)(Game.player.getX() + Game.player.getMaskX()),
+			(int)(Game.player.getY() + Game.player.getMaskY()),
+			(int)Game.player.getMaskWidth(),
+			(int)Game.player.getMaskHeight());
+		
+		for(int index = 0; index < Game.entities.size(); index++) {
+			
+			if(Game.entities.get(index) instanceof Tree) {
+				
+				Rectangle entityCollider = new Rectangle(
+						(int)(Game.entities.get(index).getX() + Game.entities.get(index).getMaskX()),
+						(int)(Game.entities.get(index).getY() + Game.entities.get(index).getMaskY()),
+						(int)Game.entities.get(index).getMaskWidth(),
+						(int)Game.entities.get(index).getMaskHeight());
+				
+				if(playerCollider.intersects(entityCollider)) {
+					PlayerState.setState(new Player_Climb());
+				}
+				
+			}
+			
+		}
+		
+		
+	}
+
+	@Override
+	public void walk() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void jump() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void fall() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void feedback() {
+		// TODO Auto-generated method stub
+
+	}
+
+}

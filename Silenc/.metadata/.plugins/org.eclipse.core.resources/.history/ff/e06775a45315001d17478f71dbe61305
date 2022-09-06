@@ -1,0 +1,27 @@
+package com.GupiGames.World;
+
+import java.awt.image.BufferedImage;
+
+public class pressurePlates {
+	
+	public String State = "Normal";
+	
+	public static BufferedImage normal; 
+	public static BufferedImage pressed;
+	
+	public void im() {
+		for
+	}
+	
+	public void openDoor() {
+		
+		if(State == "pressed") {
+			
+		}
+		else {
+			
+		}
+		
+	}
+
+}

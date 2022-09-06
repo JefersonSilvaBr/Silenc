@@ -1,0 +1,26 @@
+package com.GupiGames.Entities;
+
+import java.awt.image.BufferedImage;
+
+public class Entity {
+
+	protected BufferedImage sprite;
+	protected int Width, Height;
+	protected int x, y , z;
+	
+	protected int maskWidth, maksHeight;
+	protected int maskX, maskY;
+	
+	public Entity(BufferedImage sprite, int x, int y, int Width, int Height) {
+		
+		this.Width = Width; this.Height = Height;
+		this.x = x; this.y = y;
+		this.sprite = sprite;
+		
+	}
+	
+	public int getX() {
+		return x;
+	}
+	
+}

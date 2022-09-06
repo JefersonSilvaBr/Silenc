@@ -1,0 +1,38 @@
+package com.GupiGames.Entities;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+
+import com.GupiGames.FSM.PlayerState;
+import com.GupiGames.FSM.Player_Idle;
+
+public class Player extends Entity{
+
+	public PlayerState playerState;
+	
+	public static boolean up, left, right;
+	
+	public Player(BufferedImage sprite, int x, int y, int Width, int Height) {
+		super(sprite, x, y, Width, Height);
+		
+		maskWidth = 8;  maskHeight = 15;
+		maskX = 4 ; maskY = 1;
+		
+		playerState = new Player_Idle();
+	}
+	
+	public void playerController() {
+		playerState.interact();
+		playerState.idle();
+		playerState.walk();
+		playerState.fall();
+		playerState.jump();
+	}
+	
+	public void update() {
+		playerController();
+	}
+	
+	
+}

@@ -1,0 +1,85 @@
+package com.GupiGames.FSM.Game;
+
+import java.awt.Graphics;
+
+import com.GupiGames.Entities.Player;
+import com.GupiGames.main.Game;
+import com.GupiGames.main.UI;
+
+public class Game_Menu implements GameState {
+	
+	public String[] options = {"Play", "Story", "Credits", "Exit"};
+	public int curOption = 0;
+	public int opacity = 0;
+	
+	public void update() {
+		
+		if(Player.up) {
+			if((curOption - 1) < 0) {
+				curOption = options.length - 1;
+			}
+			else {
+				curOption--;
+			}
+			Player.up = false;
+		}
+		else if(Player.down) {
+			if((curOption + 1) >= options.length) {
+				curOption = 0;
+			}
+			else {
+				curOption++;
+			}
+			Player.down = false;
+		}
+		
+		if(curOption == 0 && Player.enterMenu) {
+			Player.enterMenu = false;
+			Game.currentMap = 0;
+			Game.gameState = new Game_Transit();
+		}
+		else if(curOption == 1 && Player.enterMenu) {
+			
+		}
+		else if(curOption == 2 && Player.enterMenu) {
+			Player.enterMenu = false;
+			Game.gameState = new Game_Credits();
+		}
+		else if(curOption == 3 && Player.enterMenu) {
+			Player.enterMenu = false;
+			Game.gameState = new Game_Exit();
+		}
+		
+	}
+
+	public void render(Graphics g) {
+		
+		int i = 10;
+		
+		g.drawImage(UI.logo, 60, 5, null);
+		
+		g.drawImage(UI.ButtonMask_off, 95, 49 + i, null);
+		g.drawImage(UI.ButtonMask_off, 95, 69 + i, null);
+		g.drawImage(UI.ButtonMask_off, 95, 89 + i, null);
+		g.drawImage(UI.ButtonMask_off, 95, 109 + i, null);
+		
+		if(curOption == 0) {
+			g.drawImage(UI.ButtonMask_on, 95, 49 + i, null);
+		}
+		else if(curOption == 1) {
+			g.drawImage(UI.ButtonMask_on, 95, 69 + i, null);
+		}
+		else if(curOption == 2) {
+			g.drawImage(UI.ButtonMask_on, 95, 89 + i, null);
+		}
+		else if(curOption == 3) {
+			g.drawImage(UI.ButtonMask_on, 95, 109 + i, null);
+		}
+		
+		g.drawImage(UI.ButtonPlay, 96, 50 + i, null);
+		g.drawImage(UI.ButtonStory, 96, 70 + i, null);
+		g.drawImage(UI.ButtonCredits, 96, 90 + i, null);
+		g.drawImage(UI.ButtonExit, 96, 110 + i, null);
+	}
+
+}

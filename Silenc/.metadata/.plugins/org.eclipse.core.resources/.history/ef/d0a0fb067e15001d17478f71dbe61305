@@ -1,0 +1,41 @@
+package com.GupiGames.Entities;
+
+import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
+
+import com.GupiGames.main.Game;
+
+public class Tree extends Entity{
+
+	public Tree(BufferedImage sprite, int x, int y, int Width, int Height) {
+		super(sprite, x, y, Width, Height);
+		maskWidth = 8; maskHeight = 8;
+	}
+	
+	public static boolean isClimb() {
+		
+		Rectangle playerCollider = new Rectangle(
+				(int)(Game.player.getX() + Game.player.getMaskX()),
+				(int)(Game.player.getY() + Game.player.getMaskY()),
+				(int)Game.player.getMaskWidth(),
+				(int)Game.player.getMaskHeight());
+			
+		for(int index = 0; index < Game.entities.size(); index++) {
+				
+			if(Game.entities.get(index) instanceof Tree) {
+				
+				Rectangle entityCollider = new Rectangle(
+						(int)(Game.entities.get(index).getX() + Game.entities.get(index).getMaskX()),
+						(int)(Game.entities.get(index).getY() + Game.entities.get(index).getMaskY()),
+						(int)Game.entities.get(index).getMaskWidth(),
+						(int)Game.entities.get(index).getMaskHeight());
+					
+				if(playerCollider.intersects(entityCollider)) {
+					return true;	
+				}
+			}		
+		}
+		return false;
+	}
+
+}

@@ -1,0 +1,20 @@
+package com.GupiGames.World;
+
+import java.awt.image.BufferedImage;
+
+import com.GupiGames.main.Game;
+
+public class TrapTile extends Tile{
+		
+	public static BufferedImage spike_Inverse_down = Game.tilesSheet.getSprite(32, 0, 16, 16);
+	public static BufferedImage spike_Inverse_up = Game.tilesSheet.getSprite(48, 0, 16, 16);
+	public static BufferedImage spike_Inverse_left = Game.tilesSheet.getSprite(32, 16, 16, 16);
+	public static BufferedImage spike_Inverse_right = Game.tilesSheet.getSprite(48, 16, 16, 16);
+	
+	public static BufferedImage spike = Game.tilesSheet.getSprite(0, 48, 16, 16);
+	
+	public TrapTile(BufferedImage sprite, int x, int y, int Width, int Height) {
+		super(sprite, x, y, Width, Height);
+	}
+		
+}

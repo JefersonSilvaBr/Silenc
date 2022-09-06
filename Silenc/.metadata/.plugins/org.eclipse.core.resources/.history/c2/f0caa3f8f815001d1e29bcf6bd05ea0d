@@ -1,0 +1,16 @@
+package com.GupiGames.FSM;
+
+import java.awt.Graphics;
+
+import com.GupiGames.main.UI;
+
+public class Game_Menu implements GameState {
+
+	public void update() {
+	}
+
+	public void render(Graphics g) {
+		g.drawImage(UI.ButtonPlay, 144, 120, null);
+	}
+
+}

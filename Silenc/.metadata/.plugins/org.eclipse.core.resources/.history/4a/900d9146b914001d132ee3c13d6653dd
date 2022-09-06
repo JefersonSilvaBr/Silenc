@@ -1,0 +1,62 @@
+package com.GupiGames.Entities;
+
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+
+import com.GupiGames.main.Game;
+
+public class NoteOfSouls extends Entity{
+	
+	public BufferedImage[] currentAni;
+	public BufferedImage[] note1;
+	public BufferedImage[] note2;
+
+	public int directionX;
+	
+	public NoteOfSouls(BufferedImage sprite, int x, int y, int Width, int Height, int dic) {
+		super(sprite, x, y, Width, Height);
+		directionX = dic;
+		initSprite();
+	}
+
+	public void moves() {
+		x+= 1*directionX;
+	}
+	public void initSprite() {
+		
+		note1 = new BufferedImage[2];
+		note1[0] = Game.playerSheet.getSprite(0, 16*4, 16, 16);
+		note1[1] = Game.playerSheet.getSprite(16, 16*4, 16, 16);
+		
+		note2 = new BufferedImage[2];
+		note2[0] = Game.playerSheet.getSprite(32, 16*4, 16, 16);
+		note2[1] = Game.playerSheet.getSprite(48, 16*4, 16, 16);
+		
+		currentAni = note1;
+		if(Game.rand.nextInt(6) > 2) {
+			currentAni = note2;
+		}
+		
+	}
+	
+	public void animation() {
+		frame++;
+		if(frame >= maxFrame) {
+			curAnimation++;
+			frame = 0;
+		}
+		if(curAnimation >= 2) {
+			curAnimation = 0;
+		}
+	}
+	
+	public void update() {
+		animation();
+		moves();
+	}
+	
+	public void render(Graphics g) {
+		g.drawImage(currentAni[curAnimation], x, y, null);
+	}
+	
+}

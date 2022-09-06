@@ -1,0 +1,19 @@
+package com.GupiGames.Graphics;
+
+import java.applet.AudioClip;
+
+public class Sound {
+	
+	private AudioClip clip;
+	
+	private Sound(String name) {
+		try {
+			clip = Applet.newAudioClip(Sound.class.getResource(name));
+		}catch(Throwable e) {}
+	}
+	
+	public void play() {
+		
+	}
+
+}

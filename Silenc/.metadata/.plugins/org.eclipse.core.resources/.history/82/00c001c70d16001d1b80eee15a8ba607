@@ -1,0 +1,21 @@
+package com.GupiGames.FSM;
+
+import java.awt.Graphics;
+
+import com.GupiGames.main.UI;
+
+public class Game_Credits implements GameState {
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void render(Graphics g) {
+		g.drawImage(UI.credits, 0, 0, null);
+
+	}
+
+}

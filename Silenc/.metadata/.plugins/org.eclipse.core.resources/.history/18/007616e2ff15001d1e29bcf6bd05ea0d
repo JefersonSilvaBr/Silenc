@@ -1,0 +1,27 @@
+package com.GupiGames.FSM;
+
+import java.awt.Graphics;
+
+import com.GupiGames.main.UI;
+
+public class Game_Menu implements GameState {
+
+	public void update() {
+	}
+
+	public void render(Graphics g) {
+		
+		int i = 10;
+		
+		g.drawImage(UI.ButtonMask_off, 95, 49 + i, null);
+		g.drawImage(UI.ButtonMask_off, 95, 69 + i, null);
+		g.drawImage(UI.ButtonMask_off, 95, 89 + i, null);
+		g.drawImage(UI.ButtonMask_off, 95, 19 + i, null);
+		
+		g.drawImage(UI.ButtonPlay, 96, 50 + i, null);
+		g.drawImage(UI.ButtonStory, 96, 70 + i, null);
+		g.drawImage(UI.ButtonCredits, 96, 90 + i, null);
+		g.drawImage(UI.ButtonExit, 96, 110 + i, null);
+	}
+
+}

@@ -1,0 +1,25 @@
+package com.GupiGames.Entities;
+
+import java.awt.image.BufferedImage;
+
+import com.GupiGames.main.Game;
+
+public class Door extends Entity{
+	
+	public String State = "close";
+
+	public Door(BufferedImage sprite, int x, int y, int Width, int Height) {
+		super(sprite, x, y, Width, Height);
+	}
+	
+	public void isColliding() {
+		for(int index = 0; index < Game.entities.size(); index++) {
+			Game.entities
+		}
+	}
+	
+	public void update() {
+		
+	}
+	
+}

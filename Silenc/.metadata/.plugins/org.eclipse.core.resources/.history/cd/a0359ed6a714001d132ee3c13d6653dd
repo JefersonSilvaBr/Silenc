@@ -1,0 +1,33 @@
+package com.GupiGames.FSM;
+
+public class Player_Interact implements PlayerState {
+
+	@Override
+	public void interact() {
+		
+	}
+
+	@Override
+	public void idle() {
+		
+	}
+
+	@Override
+	public void walk() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void jump() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void fall() {
+		// TODO Auto-generated method stub
+
+	}
+
+}

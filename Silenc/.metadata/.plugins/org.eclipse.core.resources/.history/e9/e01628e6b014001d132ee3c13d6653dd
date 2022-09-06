@@ -1,0 +1,37 @@
+package com.GupiGames.Graphics;
+
+import java.awt.image.BufferedImage;
+
+import com.GupiGames.main.Game;
+
+public class PlayerAni {
+	
+	public static BufferedImage[] idle_Right;
+	public static BufferedImage[] idle_Left;
+	
+	public static BufferedImage[] run_Right;
+	public static BufferedImage[] run_Left;
+	
+	public static BufferedImage[] interact_Right;
+	public static BufferedImage[] interact_Left;
+	
+	public static BufferedImage[] feedback_Right;
+	public static BufferedImage[] feedback_Left;
+
+	public PlayerAni() {
+		idle();
+	}
+	
+	public void idle() {
+		
+		idle_Right = new BufferedImage[2];
+		idle_Right[0] = Game.playerSheet.getSprite(0, 0, 16, 16);
+		idle_Right[1] = Game.playerSheet.getSprite(16, 0, 16, 16);
+		
+		idle_Left = new BufferedImage[2];
+		idle_Left[0] = Game.playerSheet.getSprite(0, 0, 16, 16);
+		idle_Left[1] = Game.playerSheet.getSprite(16, 0, 16, 16);
+
+	}
+	
+}

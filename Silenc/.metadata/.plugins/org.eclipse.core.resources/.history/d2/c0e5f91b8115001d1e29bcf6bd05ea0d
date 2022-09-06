@@ -1,0 +1,13 @@
+package com.GupiGames.World;
+
+import java.awt.image.BufferedImage;
+
+public class Plataform extends FloorTile{
+	
+	public static BufferedImage;
+
+	public Plataform(BufferedImage sprite, int x, int y, int Width, int Height) {
+		super(sprite, x, y, Width, Height);
+	}
+
+}

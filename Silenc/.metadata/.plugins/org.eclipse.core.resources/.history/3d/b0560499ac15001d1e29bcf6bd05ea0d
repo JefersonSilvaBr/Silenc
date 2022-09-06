@@ -1,0 +1,118 @@
+package com.GupiGames.Graphics;
+
+import java.awt.image.BufferedImage;
+
+import com.GupiGames.main.Game;
+
+public class PlayerAni {
+	
+	public static BufferedImage[] idle_Right;
+	public static BufferedImage[] idle_Left;
+	
+	public static BufferedImage[] run_Right;
+	public static BufferedImage[] run_Left;
+	
+	public static BufferedImage[] interact_Right;
+	public static BufferedImage[] interact_Left;
+	
+	public static BufferedImage[] fall_Right;
+	public static BufferedImage[] fall_Left;
+	
+	public static BufferedImage[] climb;
+	
+	public static BufferedImage[] dead;
+	
+	public static BufferedImage[] feedback_Right;
+	public static BufferedImage[] feedback_Left;
+
+	public PlayerAni() {
+		idle();
+		run();
+		interact();
+		fall();
+		climb();
+		feedback();
+		dead();
+	}
+	
+	public void idle() {
+		
+		idle_Right = new BufferedImage[2];
+		idle_Right[0] = Game.playerSheet.getSprite(0, 0, 16, 16);
+		idle_Right[1] = Game.playerSheet.getSprite(0, 0, 16, 16);
+		
+		idle_Left = new BufferedImage[2];
+		idle_Left[0] = Game.playerSheet.getSprite(48, 0, 16, 16);
+		idle_Left[1] = Game.playerSheet.getSprite(48, 0, 16, 16);
+
+	}
+	
+	public void run() {
+		
+		run_Right = new BufferedImage[2];
+		run_Right[0] = Game.playerSheet.getSprite(0, 16, 16, 16);
+		run_Right[1] = Game.playerSheet.getSprite(16, 16, 16, 16);
+		
+		run_Left = new BufferedImage[2];
+		run_Left[0] = Game.playerSheet.getSprite(32, 16, 16, 16);
+		run_Left[1] = Game.playerSheet.getSprite(48, 16, 16, 16);
+		
+	}
+	
+	public void interact() {
+		
+		interact_Right = new BufferedImage[2];
+		interact_Right[0] = Game.playerSheet.getSprite(0, 32, 16, 16);
+		interact_Right[1] = Game.playerSheet.getSprite(16, 32, 16, 16);
+		
+		interact_Left = new BufferedImage[2];
+		interact_Left[0] = Game.playerSheet.getSprite(32, 32, 16, 16);
+		interact_Left[1] = Game.playerSheet.getSprite(48, 32, 16, 16);
+		
+	}
+	
+	public void fall() {
+		
+		fall_Right = new BufferedImage[2];
+		fall_Right[0] = Game.playerSheet.getSprite(0, 80, 16, 16);
+		fall_Right[1] = Game.playerSheet.getSprite(16, 80, 16, 16);
+		
+		fall_Left = new BufferedImage[2];
+		fall_Left[0] = Game.playerSheet.getSprite(32, 80, 16, 16);
+		fall_Left[1] = Game.playerSheet.getSprite(48, 80, 16, 16);
+		
+	}
+	
+	public void climb() {
+		climb = new BufferedImage[2];
+		climb[0] = Game.playerSheet.getSprite(0, 96, 16, 16);
+		climb[1] = Game.playerSheet.getSprite(16, 96, 16, 16);	
+	}
+	
+	public void feedback() {
+		
+		feedback_Right = new BufferedImage[2];
+		feedback_Right[0] = Game.playerSheet.getSprite(0, 48, 16, 16);
+		feedback_Right[1] = Game.playerSheet.getSprite(16, 48, 16, 16);
+		
+		feedback_Left = new BufferedImage[2];
+		feedback_Left[0] = Game.playerSheet.getSprite(32, 48, 16, 16);
+		feedback_Left[1] = Game.playerSheet.getSprite(48, 48, 16, 16);
+		
+	}
+	
+	public void dead() {
+		dead = new BufferedImage[4];
+		dead[0] = Game.playerSheet.getSprite(0, 112, 16, 16);
+		dead[1] = Game.playerSheet.getSprite(16, 112, 16, 16);
+		dead[2] = Game.playerSheet.getSprite(32, 112, 16, 16);
+		dead[3] = Game.playerSheet.getSprite(48, 112, 16, 16);
+	}
+	
+	public void portal() {
+		dead = new BufferedImage[4];
+		dead[0] = Game.playerSheet.getSprite(0, 112, 16, 16);
+		dead[1] = Game.playerSheet.getSprite(16, 112, 16, 16);
+	}
+	
+}

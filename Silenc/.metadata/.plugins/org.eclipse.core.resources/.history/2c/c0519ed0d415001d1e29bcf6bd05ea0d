@@ -1,0 +1,30 @@
+package com.GupiGames.Graphics;
+
+import java.lang.instrument.*;
+import java.net.URL;
+
+import com.GupiGames.main.Game;
+
+
+
+public class Sound {
+	
+	private static Sound musica;
+
+	public Sound(URL resource) {
+	}
+
+	public void play(String name) {
+		musica = new Sound(Game.class.getResource(name));
+		Sound.musica.play();
+	}
+	
+	public void loop(String name) {
+		
+	}
+	
+	public void Stop(String name) {
+		
+	}
+	
+}
